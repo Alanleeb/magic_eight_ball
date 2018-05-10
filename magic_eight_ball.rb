@@ -1,6 +1,8 @@
+require 'pry'
+
 
 class Answers
-  attr_accessor :input
+  attr_accessor :input, :ans
 
   def initialize
     @ans = ["Yes", "Definately", "No", "Maybe", "I'm Busy Come Back Later."]
@@ -9,8 +11,11 @@ class Answers
 
   def add_answers
     puts "Add an answer: "
-      @ans << gets.strip
-      puts @ans.last
+    @ans << gets.strip
+    puts "Your answer has been added."
+    menu = MagicEightBalls.new
+    menu.game_menu
+
   end
 
 end
@@ -20,8 +25,9 @@ class MagicEightBalls
 
   def initialize
     game_menu
-    answer = Answers.new
-    #@add_answers = Answers.new
+  end
+
+  def start_game
     puts "Welcome To The FUTURE."
     questions
   end
@@ -31,12 +37,25 @@ class MagicEightBalls
     puts '1: Start Game'
     puts '2: Add Answers'
     puts '3: Exit'
+
+    case gets.to_i
+    when 1
+      start_game
+    when 2
+     Answers.new
+    when 3
+      exit
+    else
+      puts "Invalid Entry. Choose from the menu."
+      game_menu
+    end
   end
 
   def questions
     puts "Ask me anything you want to know."
     question = gets.strip
-    puts @ans.sample
+    #puts answer.ans
+    # puts @ans.sample
     try_again
     end
 
