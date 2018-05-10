@@ -1,13 +1,36 @@
 
+class Answers
+  attr_accessor :input
+
+  def initialize
+    @ans = ["Yes", "Definately", "No", "Maybe", "I'm Busy Come Back Later."]
+    add_answers
+  end
+
+  def add_answers
+    puts "Add an answer: "
+      @ans << gets.strip
+      puts @ans.last
+  end
+
+end
 
 class MagicEightBalls
   attr_accessor :ans, :user, :name
 
   def initialize
-    @ans = ["Yes", "Definately", "No", "Maybe", "I'm Busy Come Back Later."]
-
+    game_menu
+    answer = Answers.new
+    #@add_answers = Answers.new
     puts "Welcome To The FUTURE."
     questions
+  end
+
+  def game_menu
+    puts "=== MENU ==="
+    puts '1: Start Game'
+    puts '2: Add Answers'
+    puts '3: Exit'
   end
 
   def questions
