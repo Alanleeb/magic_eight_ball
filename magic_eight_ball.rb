@@ -54,7 +54,7 @@ class MagicEightBalls
   def questions
     puts "Ask me anything you want to know."
     question = gets.strip
-    #puts answer.ans
+    # puts answer.ans
     # puts @ans.sample
     try_again
     end
